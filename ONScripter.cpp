@@ -136,9 +136,21 @@ void ONScripter::initSDL() {
   SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 0);
   SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 
+  // pick up --fullscreen or --window
+  Uint32 windowFlags = SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN;
+  if (fullscreen_mode) {
+    windowFlags |= SDL_WINDOW_FULLSCREEN_DESKTOP;
+  } else if (window_mode) {
+    windowFlags |= SDL_WINDOW_RESIZABLE;
+  } else {
+    windowFlags |= SDL_WINDOW_BORDERLESS;
+  }
   window = SDL_CreateWindow(
-      NULL, 0, 0, screen_device_width, screen_device_height,
-      SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS);
+      wm_title_string,
+      SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+      screen_device_width, screen_device_height,
+      windowFlags);
+  SDL_SetWindowResizable(window, SDL_FALSE);
   SDL_GetWindowSize(window, &device_width, &device_height);
   renderer = SDL_CreateRenderer(window, -1, 0);
   texture_format = SDL_PIXELFORMAT_ARGB8888;
