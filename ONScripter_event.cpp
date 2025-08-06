@@ -774,7 +774,8 @@ void ONScripter::shiftCursorOnButton(int diff) {
     x = x * screen_device_width / screen_width;
     y = y * screen_device_width / screen_width;
     shift_over_button = button->no;
-    SDL_WarpMouse(x, y);
+    // SDL_WarpMouse is deprecated; warp the mouse within our SDL2 window.
+    SDL_WarpMouseInWindow(window, x, y);
   }
 }
 

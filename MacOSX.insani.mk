@@ -9,7 +9,9 @@ INCS = `sdl2-config --cflags` \
 # Turn this on for redist build
 LIBS = `sdl2-config --libs` \
        `pkg-config --libs SDL2_image SDL2_mixer SDL2_ttf freetype2 harfbuzz` \
-       -lbz2 -ljpeg -lm
+       -lbz2 -ljpeg -lm \
+       -framework Foundation \
+       -framework Cocoa
 DEFS = -DMACOSX -DUTF8_CAPTION -DUSE_OGG_VORBIS -DUTF8_FILESYSTEM -DINSANI -DENABLE_1BYTE_CHAR -DFORCE_1BYTE_CHAR
 #DEFS += -DAPPBUNDLE
 

@@ -45,6 +45,37 @@ typedef struct SDL_Overlay {
 } SDL_Overlay;
 #endif
 
+#ifndef SDL_CD
+typedef struct SDL_CD {
+  /* empty stub */
+  int unused;
+} SDL_CD;
+#endif
+
+typedef SDL_Keycode SDLKey;
+
+// Mouse wheel buttons (SDL1 used 4/5)
+#ifndef SDL_BUTTON_WHEELUP
+#  define SDL_BUTTON_WHEELUP   4
+#endif
+#ifndef SDL_BUTTON_WHEELDOWN
+#  define SDL_BUTTON_WHEELDOWN 5
+#endif
+
+// Keypad keys: SDL2 names them SDLK_KP_1 ... SDLK_KP_9
+#ifndef SDLK_KP1
+#  define SDLK_KP1 SDLK_KP_1
+#  define SDLK_KP2 SDLK_KP_2
+#  define SDLK_KP3 SDLK_KP_3
+#  define SDLK_KP4 SDLK_KP_4
+#  define SDLK_KP5 SDLK_KP_5
+#  define SDLK_KP6 SDLK_KP_6
+#  define SDLK_KP7 SDLK_KP_7
+#  define SDLK_KP8 SDLK_KP_8
+#  define SDLK_KP9 SDLK_KP_9
+#  define SDLK_KP0 SDLK_KP_0
+#endif
+
 #define DEFAULT_VIDEO_SURFACE_FLAG (SDL_SWSURFACE)
 
 #define DEFAULT_BLIT_FLAG (0)

@@ -1562,7 +1562,9 @@ int ONScripter::movemousecursorCommand() {
   x = x * screen_device_width / screen_width;
   y = y * screen_device_width / screen_width;
 
-  SDL_WarpMouse(x, y);
+  // SDL_WarpMouse was removed in SDL2; warp the mouse within the current
+  // window instead.
+  SDL_WarpMouseInWindow(window, x, y);
 
   return RET_CONTINUE;
 }

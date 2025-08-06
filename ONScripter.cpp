@@ -1283,7 +1283,11 @@ void ONScripter::refreshMouseOverButton() {
   shift_over_button = -1;
   current_button_link = root_button_link.next;
   SDL_GetMouseState(&mx, &my);
-  if (!(SDL_GetAppState() & SDL_APPMOUSEFOCUS)) {
+  // SDL_GetAppState and SDL_APPMOUSEFOCUS were removed in SDL2. To determine
+  // whether the application window has mouse focus, query the window flags and
+  // fall back to "off-screen" coordinates when the mouse is outside the window
+  // just as the SDL 1.2 code did.
+  if (!(SDL_GetWindowFlags(window) & SDL_WINDOW_MOUSE_FOCUS)) {
     mx = screen_device_width;
     my = screen_device_height;
   }
