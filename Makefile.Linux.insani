@@ -26,10 +26,6 @@ DEFS = -DLINUX
 INCS = `sdl2-config --cflags` -I/usr/include/harfbuzz
 LIBS = `sdl2-config --libs` -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lbz2 -ljpeg -lm -lharfbuzz
 
-# recommended: smpeg
-DEFS += -DUSE_SMPEG
-INCS += `smpeg-config --cflags`
-LIBS += `smpeg-config --libs`
 
 # recommended: fontconfig (to get default font)
 DEFS += -DUSE_FONTCONFIG

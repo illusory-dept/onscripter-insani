@@ -160,7 +160,10 @@ public:
   void setImage(SDL_Surface *surface, Uint32 texture_format);
   unsigned char getAlpha(int x, int y);
 
-  void convertFromYUV(SDL_Overlay *src);
+  // SDL2 has no SDL_Overlay; stub out YUV overlay support
+  inline void convertFromYUV(void* /*unused*/) {
+    /* no-op under SDL2 */
+  }
   void subtract(SDL_Surface *surface, AnimationInfo *layer_info,
                 unsigned char *layer_alpha_buf);
 };
