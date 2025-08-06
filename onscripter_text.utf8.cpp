@@ -1468,7 +1468,7 @@ int ONScripter::textCommand() {
   char *buf = script_h.getStringBuffer();
 
   bool tag_flag = true;
-  unsigned short unicode = script_h.enc.getUTF16("Åy", Encoding::CODE_CP932);
+  unsigned short unicode = script_h.enc.getUTF16("„Äê", Encoding::CODE_CP932);
   int n = script_h.enc.getBytes(buf[string_buffer_offset]);
   if (buf[string_buffer_offset] == '[')
     string_buffer_offset++;
@@ -1481,7 +1481,7 @@ int ONScripter::textCommand() {
   int start_offset = string_buffer_offset;
   int end_offset = start_offset;
   while (tag_flag && buf[string_buffer_offset]) {
-    unsigned short unicode = script_h.enc.getUTF16("Åz", Encoding::CODE_CP932);
+    unsigned short unicode = script_h.enc.getUTF16("„Äë", Encoding::CODE_CP932);
     int n = script_h.enc.getBytes(buf[string_buffer_offset]);
     if (zenkakko_flag &&
         script_h.enc.getUTF16(buf + string_buffer_offset) == unicode) {

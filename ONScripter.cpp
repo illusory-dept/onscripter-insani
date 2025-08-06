@@ -28,6 +28,7 @@
 #ifdef USE_FONTCONFIG
 #include <fontconfig/fontconfig.h>
 #endif
+#include <SDL2/SDL_ttf.h>
 
 #if defined(MACOSX) && defined(INSANI)
 #import <CoreFoundation/CoreFoundation.h>
@@ -145,11 +146,9 @@ void ONScripter::initSDL() {
   } else {
     windowFlags |= SDL_WINDOW_BORDERLESS;
   }
-  window = SDL_CreateWindow(
-      wm_title_string,
-      SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-      screen_device_width, screen_device_height,
-      windowFlags);
+  window = SDL_CreateWindow(wm_title_string, SDL_WINDOWPOS_CENTERED,
+                            SDL_WINDOWPOS_CENTERED, screen_device_width,
+                            screen_device_height, windowFlags);
   SDL_SetWindowResizable(window, SDL_FALSE);
   SDL_GetWindowSize(window, &device_width, &device_height);
   renderer = SDL_CreateRenderer(window, -1, 0);
@@ -941,11 +940,25 @@ void ONScripter::resetSentenceFont() {
   sentence_font.font_size_xy[0] = DEFAULT_FONT_SIZE;
   sentence_font.font_size_xy[1] = DEFAULT_FONT_SIZE;
   sentence_font.top_xy[0] = 21;
-  sentence_font.top_xy[1] = 16; // + sentence_font.font_size;
+  TTF_Font *ttf = (TTF_Font *)sentence_font.ttf_font[0];
+  if (ttf) {
+    int ascent   = TTF_FontAscent(ttf);
+    int height   = TTF_FontHeight(ttf);      // ascent + descent
+    int lineskip = TTF_FontLineSkip(ttf);    // recommended distance from one baseline to the next
+
+    // fill pitch (cell height) and then center the baseline within it
+    sentence_font.pitch_xy[1] = lineskip;
+    sentence_font.top_xy[1]   = ascent + (lineskip - height) / 2;
+  } else {
+    // fallback if no TTF font is loaded
+    int fallback_h = sentence_font.font_size_xy[1];
+    int fallback_ls = 2 + fallback_h;
+    sentence_font.pitch_xy[1] = fallback_ls;
+    sentence_font.top_xy[1]   = fallback_h + (fallback_ls - fallback_h) / 2;
+  }
   sentence_font.num_xy[0] = 23;
   sentence_font.num_xy[1] = 16;
   sentence_font.pitch_xy[0] = sentence_font.font_size_xy[0];
-  sentence_font.pitch_xy[1] = 2 + sentence_font.font_size_xy[1];
   sentence_font.wait_time = 20;
   sentence_font.window_color[0] = sentence_font.window_color[1] =
       sentence_font.window_color[2] = 0x99;

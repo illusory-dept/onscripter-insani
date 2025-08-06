@@ -24,10 +24,6 @@
 #include "ONScripter.h"
 #include "version.h"
 
-#if defined(INSANI)
-#define INSANI_VERSION "20230523 \"FC01\""
-#endif
-
 ONScripter ons;
 
 #if defined(IOS)
@@ -385,31 +381,6 @@ int main(int argc, char **argv)
 {
   printf("ONScripter version %s(%d.%02d)\n", ONS_VERSION, NSC_VERSION / 100,
          NSC_VERSION % 100);
-
-#if defined(INSANI)
-  int uwu = rand() % 5;
-  switch (uwu) {
-  case 4:
-    printf("UWUCHAAAAAAAAAAAAAAAT~!!!!!!!!!\n%s -copychat-\n", INSANI_VERSION);
-    printf("Ego te absolvo, in nomine cattus\n");
-    break;
-  case 3:
-    printf("Autodetect: UWUNSCRIPTER %s\n", INSANI_VERSION);
-    printf("rm: cannot remove GPL: user is in the group software-freedom\n");
-    break;
-  case 2:
-    printf("HEWWO UWU %s UWUS YOUWU\n", INSANI_VERSION);
-    break;
-  case 1:
-    printf("ERO\\4TW Unprotected Mode Run-time version %s\n", INSANI_VERSION);
-    printf("Copyright (c) Irrational Insanity Spirit, Inc. 2005-present\n");
-    break;
-  case 0:
-  default:
-    printf("Autodetect: OYABB neo-insanity spirit (%s)\n", INSANI_VERSION);
-    break;
-  }
-#endif
 
 #if defined(PSP)
   ons.disableRescale();
