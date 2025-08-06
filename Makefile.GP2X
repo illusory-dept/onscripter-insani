@@ -5,9 +5,9 @@
 
 PREF = /usr/local/devkitPro/devkitGP2X
 
-INCS = `$(PREF)/bin/sdl-config --cflags` `$(PREF)/bin/freetype-config --cflags`
+INCS = `$(PREF)/bin/sdl2-config --cflags` `$(PREF)/bin/freetype-config --cflags`
 
-LIBS = -static `$(PREF)/bin/sdl-config --static-libs` -lSDL_ttf -lSDL_image -lSDL_mixer -lSDL -lmikmod -lfreetype -ljpeg -lpng -lz -lbz2 -lvorbisidec
+LIBS = -static `$(PREF)/bin/sdl2-config --static-libs` -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lSDL2 -lmikmod -lfreetype -ljpeg -lpng -lz -lbz2 -lvorbisidec
 
 DEFS = -DGP2X -DLINUX -DPDA_WIDTH=320 -DBPP16 -DUSE_OGG_VORBIS -DINTEGER_OGG_VORBIS
 

@@ -5,17 +5,17 @@
 
 PREF = /usr/local/arm-apple-darwin
 
-INCS = `$(PREF)/bin/sdl-config --cflags` `$(PREF)/bin/freetype-config --cflags`
-#LIBS = `$(PREF)/bin/sdl-config --libs` -lSDL_ttf -lSDL_image -lSDL_mixer -lSDL -lvorbisidec -lfreetype -ljpeg -lpng -lbz2 -lz
-LIBS = `$(PREF)/bin/sdl-config --libs` \
-	$(PREF)/lib/libSDL_ttf.a \
-	$(PREF)/lib/libSDL_image.a \
-	$(PREF)/lib/libSDL_mixer.a \
-	$(PREF)/lib/libSDL.a \
-	$(PREF)/lib/libvorbisidec.a \
-	$(PREF)/lib/libfreetype.a \
-	$(PREF)/lib/libjpeg.a \
-	$(PREF)/lib/libpng.a \
+INCS = `$(PREF)/bin/sdl2-config --cflags` `$(PREF)/bin/freetype-config --cflags`
+#LIBS = `$(PREF)/bin/sdl2-config --libs` -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lSDL2 -lvorbisidec -lfreetype -ljpeg -lpng -lbz2 -lz
+LIBS = `$(PREF)/bin/sdl2-config --libs` \
+        $(PREF)/lib/libSDL2_ttf.a \
+        $(PREF)/lib/libSDL2_image.a \
+        $(PREF)/lib/libSDL2_mixer.a \
+        $(PREF)/lib/libSDL2.a \
+        $(PREF)/lib/libvorbisidec.a \
+        $(PREF)/lib/libfreetype.a \
+        $(PREF)/lib/libjpeg.a \
+        $(PREF)/lib/libpng.a \
 	-lz -lbz2
 
 DEFS = -DIPHONE -DMACOSX -DPDA_WIDTH=424 -DBPP16 -DUSE_OGG_VORBIS -DINTEGER_OGG_VORBIS -DUTF8_CAPTION -DUTF8_FILESYSTEM

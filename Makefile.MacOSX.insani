@@ -105,16 +105,16 @@
 #
 ifeq ($(shell arch), arm64)
 # Turn this on for ARM64
-INCS = `sdl-config --cflags` `smpeg-config --cflags` `freetype-config --cflags` -I/opt/homebrew/include -I/opt/homebrew/include/harfbuzz
+INCS = `sdl2-config --cflags` `smpeg-config --cflags` `freetype-config --cflags` -I/opt/homebrew/include -I/opt/homebrew/include/harfbuzz
 else
 # Turn this on for x86-64
-INCS = `sdl-config --cflags` `smpeg-config --cflags` `freetype-config --cflags` -I/usr/local/include -I/usr/local/include/harfbuzz
+INCS = `sdl2-config --cflags` `smpeg-config --cflags` `freetype-config --cflags` -I/usr/local/include -I/usr/local/include/harfbuzz
 endif
 
 # Turn this on to debug
-#LIBS = `sdl-config --libs` `smpeg-config --libs` `freetype-config --libs` -lSDL_ttf -lSDL_image -lSDL_mixer -lbz2 -lm -ljpeg -lmpg123 -F/Library/Frameworks -framework AVFoundation -framework CoreFoundation -framework Foundation -framework SDL2 -framework Cocoa
+#LIBS = `sdl2-config --libs` `smpeg-config --libs` `freetype-config --libs` -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lbz2 -lm -ljpeg -lmpg123 -F/Library/Frameworks -framework AVFoundation -framework CoreFoundation -framework Foundation -framework SDL2 -framework Cocoa
 # Turn this on for redist build
-LIBS = `sdl-config --libs` `smpeg-config --libs` `freetype-config --libs` -lSDL_ttf -lSDL_image -lSDL_mixer -lbz2 -lm -ljpeg -lharfbuzz -framework AVFoundation -framework CoreFoundation -framework Foundation
+LIBS = `sdl2-config --libs` `smpeg-config --libs` `freetype-config --libs` -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lbz2 -lm -ljpeg -lharfbuzz -framework AVFoundation -framework CoreFoundation -framework Foundation
 DEFS = -DMACOSX -DUSE_CDROM -DUTF8_CAPTION -DUSE_OGG_VORBIS -DUTF8_FILESYSTEM -DINSANI -DENABLE_1BYTE_CHAR -DFORCE_1BYTE_CHAR
 #DEFS += -DAPPBUNDLE
 

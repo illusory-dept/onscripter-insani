@@ -22,8 +22,8 @@ EXT_OBJS =
 
 # mandatory: SDL, SDL_ttf, SDL_image, SDL_mixer, bzip2, libjpeg
 DEFS = -DLINUX
-INCS = `sdl-config --cflags` -I/usr/include/harfbuzz
-LIBS = -Wl,--start-group `sdl-config --static-libs` -lSDL_ttf -lSDL_image -lSDL_mixer -lbz2 -ljpeg -lm -lharfbuzz
+INCS = `sdl2-config --cflags` -I/usr/include/harfbuzz
+LIBS = -Wl,--start-group `sdl2-config --static-libs` -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lbz2 -ljpeg -lm -lharfbuzz
 
 # recommended: smpeg
 DEFS += -DUSE_SMPEG

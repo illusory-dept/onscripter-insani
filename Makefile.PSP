@@ -8,8 +8,8 @@ PSPPRE = $(shell psp-config --psp-prefix)
 PSPDEV = $(shell psp-config --pspdev-path)
 PSPSDK = $(shell psp-config --pspsdk-path)
 
-INCS  = $(shell $(PSPPRE)/bin/sdl-config --cflags) $(shell $(PSPPRE)/bin/freetype-config --cflags)
-LIBS  = $(shell $(PSPPRE)/bin/sdl-config --libs)
+INCS  = $(shell $(PSPPRE)/bin/sdl2-config --cflags) $(shell $(PSPPRE)/bin/freetype-config --cflags)
+LIBS  = $(shell $(PSPPRE)/bin/sdl2-config --libs)
 LIBS += -lSDL_ttf -lfreetype -lSDL_mixer -lSDL_image -lSDL -lSDLmain -lbz2 -ljpeg -lpng -lz -lmad -lvorbisidec
 
 # Include PSPSDK and Libc Headers

@@ -5,9 +5,9 @@
 
 PREF = /usr/local/mingw32ce/arm-wince-mingw32ce
 
-INCS = `$(PREF)/bin/sdl-config --cflags` `$(PREF)/bin/freetype-config --cflags`
+INCS = `$(PREF)/bin/sdl2-config --cflags` `$(PREF)/bin/freetype-config --cflags`
 
-LIBS = -static `$(PREF)/bin/sdl-config --libs` -lSDL_ttf -lSDL_image -lSDL_mixer -lSDL -lfreetype -ljpeg -lpng -lz -lbz2
+LIBS = -static `$(PREF)/bin/sdl2-config --libs` -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lSDL2 -lfreetype -ljpeg -lpng -lz -lbz2
 
 # QVGA (320x240)
 #DEFS = -DWINCE -DWIN32 -DPDA_WIDTH=320 -DBPP16
