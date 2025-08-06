@@ -1,6 +1,11 @@
 # -*- Makefile -*-
 #
-# Linux.mk - Makefile rules for linux
+# Linux.insani.mk - Makefile rules for linux
+#
+# There are minimal differences between this and the upstream version of
+# Linux.mk.  The only difference is that the enable english build defines
+# have been uncommented, and -DINSANI has been added.  This will be sufficient
+# for you to build.
 #
 
 EXESUFFIX =
@@ -18,13 +23,9 @@ EXT_OBJS =
 
 # mandatory: SDL, SDL_ttf, SDL_image, SDL_mixer, bzip2, libjpeg
 DEFS = -DLINUX
-INCS = `sdl2-config --cflags`
-LIBS = `sdl2-config --libs` -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lbz2 -ljpeg -lm
+INCS = `sdl2-config --cflags` -I/usr/include/harfbuzz
+LIBS = `sdl2-config --libs` -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lbz2 -ljpeg -lm -lharfbuzz
 
-# recommended: smpeg
-DEFS += -DUSE_SMPEG
-INCS += `smpeg-config --cflags`
-LIBS += `smpeg-config --libs`
 
 # recommended: fontconfig (to get default font)
 DEFS += -DUSE_FONTCONFIG
@@ -42,11 +43,11 @@ LIBS += -logg -lvorbis -lvorbisfile
 #DEFS += -DUSE_CDROM
 
 # optional: avifile
-DEFS += -DUSE_AVIFILE
-INCS += `avifile-config --cflags`
-LIBS += `avifile-config --libs`
-TARGET += simple_aviplay$(EXESUFFIX)
-EXT_OBJS += AVIWrapper$(OBJSUFFIX)
+#DEFS += -DUSE_AVIFILE
+#INCS += `avifile-config --cflags`
+#LIBS += `avifile-config --libs`
+#TARGET += simple_aviplay$(EXESUFFIX)
+#EXT_OBJS += AVIWrapper$(OBJSUFFIX)
 
 # optional: lua
 DEFS += -DUSE_LUA
@@ -57,8 +58,8 @@ EXT_OBJS += LUAHandler$(OBJSUFFIX)
 # optional: force screen width for PDA
 #DEFS += -DPDA_WIDTH=640
 
-# optional: enable English mode
-#DEFS += -DENABLE_1BYTE_CHAR -DFORCE_1BYTE_CHAR
+# not optional for insani build: enable English mode
+DEFS += -DENABLE_1BYTE_CHAR -DFORCE_1BYTE_CHAR -DINSANI
 
 
 # for GNU g++
