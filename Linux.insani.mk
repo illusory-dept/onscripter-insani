@@ -1,9 +1,9 @@
 # -*- Makefile -*-
 #
-# Makefile.Linux.insani - Makefile rules for linux
+# Linux.insani.mk - Makefile rules for linux
 #
 # There are minimal differences between this and the upstream version of
-# Makefile.Linux.  The only difference is that the enable english build defines
+# Linux.mk.  The only difference is that the enable english build defines
 # have been uncommented, and -DINSANI has been added.  This will be sufficient
 # for you to build.
 #
@@ -40,7 +40,7 @@ LIBS += -logg -lvorbis -lvorbisfile
 #LIBS += -lvorbisidec
 
 # optional: support CD audio
-DEFS += -DUSE_CDROM
+#DEFS += -DUSE_CDROM
 
 # optional: avifile
 #DEFS += -DUSE_AVIFILE
@@ -83,4 +83,4 @@ CFLAGS = -O3 -Wall -fomit-frame-pointer -pipe -c $(INCS) $(DEFS)
 
 RM = rm -f
 
-include Makefile.onscripter
+include onscripter.mk

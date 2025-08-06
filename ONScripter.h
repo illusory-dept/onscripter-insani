@@ -35,6 +35,16 @@
 #include <smpeg.h>
 #endif
 
+#ifndef SDL_Overlay
+typedef struct SDL_Overlay {
+  Uint32 format;
+  int w, h;
+  int planes;
+  Uint16 *pitches;
+  Uint8 **pixels;
+} SDL_Overlay;
+#endif
+
 #define DEFAULT_VIDEO_SURFACE_FLAG (SDL_SWSURFACE)
 
 #define DEFAULT_BLIT_FLAG (0)

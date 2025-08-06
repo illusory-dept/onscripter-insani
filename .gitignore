@@ -1,4 +1,5 @@
 .vscode/**
+.ropeproject
 **/.DS_Store
 *.o
 *.obj

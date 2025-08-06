@@ -1,6 +1,6 @@
 # -*- Makefile -*-
 #
-# Makefile.onscripter - General makefile rules for ONScripter
+# onscripter.mk - General makefile rules for ONScripter
 #
 
 GUI_OBJS = ONScripter$(OBJSUFFIX) \
